@@ -3,7 +3,7 @@
   "version": "0.9.8",
   "devDependencies": {
     "autoprefixer": "7.1.1",
-    "grunt": "1.0.1",
+    "grunt": "1.5.3",
     "grunt-browser-sync": "2.2.0",
     "grunt-cli": "1.2.0",
     "grunt-combine-media-queries": "1.0.20",
