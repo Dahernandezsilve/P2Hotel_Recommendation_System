@@ -43,19 +43,17 @@ public class SaveMovieServlet extends HttpServlet {
 	 	JSONArray insertionResult = new JSONArray();
 	 	
 	 	String nameHotel = request.getParameter("name");
-	 	int idHotel = request.getParameter("id");
-		boolean breakfastHotel = request.getParameter("breakfast")
-	 	int calificationHotel = request.getParameter("calification");
+	 	String idHotel = request.getParameter("id");   
+		String breakfastHotel = request.getParameter("breakfast");
+	 	String calificationHotel = request.getParameter("calification");
 		String descriptionHotel = request.getParameter("description");
-		boolean petsHotel = request.getParameter("pets");
+		String petsHotel = request.getParameter("pets");
 		String placeHotel = request.getParameter("place");
-		boolean poolHotel = request.getParameter("pool");
-		int priceHotel = request.getParameter("price");
-		boolean wifiHotel = request.getParameter("wifi");
-
-
+		String poolHotel = request.getParameter("pool");
+		String priceHotel = request.getParameter("price");
+		String wifiHotel = request.getParameter("wifi");
 	 	
-	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "Test1234" ) )
+	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "test1234" ) )
 	        {
 			 	String myResultTx = neo4jDriver.insertHotel(nameHotel, Integer.parseInt(idHotel), breakfastHotel, Integer.parseInt(calificationHotel), descriptionHotel, petsHotel, placeHotel, poolHotel, Integer.parseInt(priceHotel), wifiHotel);
 	        	

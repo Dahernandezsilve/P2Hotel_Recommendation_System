@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="123" height="30" viewBox="0 0 123 30">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 36px;
+        font-family: Ebrima;
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: #e17e16;
+      }
+    </style>
+  </defs>
+  <text id="Oh_Tell" data-name="Oh!Tell" class="cls-1" x="-1" y="27">Oh<tspan class="cls-2">!</tspan>Tell</text>
+</svg>
