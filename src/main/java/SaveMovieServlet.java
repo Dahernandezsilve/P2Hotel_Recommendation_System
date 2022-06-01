@@ -45,17 +45,17 @@ public class SaveMovieServlet extends HttpServlet {
 	 	String nameHotel = request.getParameter("name");
 	 	String idHotel = request.getParameter("id");   
 		String breakfastHotel = request.getParameter("breakfast");
-	 	String calificationHotel = request.getParameter("calification");
+	 	String calificationHotel = request.getParameter("calification").toString();
 		String descriptionHotel = request.getParameter("description");
 		String petsHotel = request.getParameter("pets");
 		String placeHotel = request.getParameter("place");
-		String poolHotel = request.getParameter("pool");
-		String priceHotel = request.getParameter("price");
-		String wifiHotel = request.getParameter("wifi");
+		String poolHotel = (String) request.getParameter("pool");
+		String priceHotel = (String) request.getParameter("price");
+		String wifiHotel = (String) request.getParameter("wifi");
 	 	
 	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "test1234" ) )
 	        {
-			 	String myResultTx = neo4jDriver.insertHotel(nameHotel, Integer.parseInt(idHotel), breakfastHotel, Integer.parseInt(calificationHotel), descriptionHotel, petsHotel, placeHotel, poolHotel, Integer.parseInt(priceHotel), wifiHotel);
+			 	String myResultTx = neo4jDriver.insertHotel(nameHotel, Integer.parseInt(idHotel), Integer.parseInt(breakfastHotel), Integer.parseInt(calificationHotel), descriptionHotel, Integer.parseInt(petsHotel), placeHotel, Integer.parseInt(poolHotel), Integer.parseInt(priceHotel),Integer.parseInt(wifiHotel));
 	        	
 			 	myResponse.put("resultado", myResultTx);
 	        } catch (Exception e) {
