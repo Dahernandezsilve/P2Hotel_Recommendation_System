@@ -42,20 +42,21 @@ public class SaveUserServlet extends HttpServlet {
 	 	
 	 	JSONArray insertionResult = new JSONArray();
 	 	
-	 	String nameHotel = request.getParameter("name");
-	 	String idHotel = String.valueOf(request.getParameter("id"));   
-		String breakfastHotel = String.valueOf(request.getParameter("breakfast"));
-	 	String calificationHotel = String.valueOf(request.getParameter("calification"));
-		String descriptionHotel = request.getParameter("description");
-		String petsHotel = String.valueOf(request.getParameter("pets"));
-		String placeHotel = String.valueOf(request.getParameter("place"));
-		String poolHotel = String.valueOf(request.getParameter("pool"));
-		String priceHotel = String.valueOf(request.getParameter("price"));
-		String wifiHotel = String.valueOf(request.getParameter("wifi"));
+	 	String nameU = request.getParameter("name");
+	 	String lastnameU = request.getParameter("lastname");   
+		String passwordU = request.getParameter("password");
+	 	String userU = request.getParameter("user");
+		String commentU = request.getParameter("comment");
+		String breakfastU = String.valueOf(request.getParameter("breakfast"));
+		String calificationU = String.valueOf(request.getParameter("calification"));
+		String poolU = String.valueOf(request.getParameter("pool"));
+		String priceU = String.valueOf(request.getParameter("price"));
+		String wifiU = String.valueOf(request.getParameter("wifi"));
+		String typeplaceU = request.getParameter("typeplace");
 	 	
 	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "test1234" ) )
 	        {
-			 	String myResultTx = neo4jDriver.insertHotel(nameHotel, idHotel, breakfastHotel, calificationHotel, descriptionHotel, petsHotel, placeHotel, poolHotel, priceHotel,wifiHotel);
+			 	String myResultTx = neo4jDriver.insertUser(nameU, lastnameU, passwordU, userU, commentU, breakfastU, calificationU, poolU, priceU,wifiU, typeplaceU);
 	        	
 			 	myResponse.put("resultado", myResultTx);
 	        } catch (Exception e) {
