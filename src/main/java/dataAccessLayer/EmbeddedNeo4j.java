@@ -110,7 +110,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
    }
    
-       public String insertHotel(String name, int id, int breakfast, int calification, String description, int pets, String place, int pool, int price, int wifi) {
+       public String insertHotel(String name, String idHotel, String breakfastHotel, String calificationHotel, String description, String petsHotel, String place, String poolHotel, String priceHotel, String wifiHotel) {
     	try ( Session session = driver.session() )
         {
    		 
@@ -120,7 +120,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public String execute( Transaction tx )
                 {
-                    tx.run( "CREATE (Test:Movie {name:'" + name + "', id:"+ id + "', breakfast:"+ breakfast +", calification:'"+ calification +", description:'"+ description + ", pets:'"+ pets +", place:'"+ place +", pool:'"+ pool + ", price:'"+ price +", wifi:'"+ wifi);
+                    tx.run( "CREATE (Test:Movie {name:'" + name + "', id:"+ idHotel + "', breakfast:"+ breakfastHotel +", calification:'"+ calificationHotel +", description:'"+ description + ", pets:'"+ petsHotel +", place:'"+ place +", pool:'"+ poolHotel + ", price:'"+ priceHotel +", wifi:'"+ wifiHotel);
                     
                     return "OK";
                 }
@@ -133,7 +133,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
         	return e.getMessage();
         }
 	 
-       
+       }
       }
 
 //   http://localhost:8080/HelloWorld/SaveMovieServlet?name=HolidayInn&breakfast=true&id=15&calification=5&description=UnHotelMuyModernoEnElCentroDeLaCiudad&pets=true&place=CiudadDeGuatemala&pool=true&price=300&wifi=true
@@ -141,5 +141,5 @@ public class EmbeddedNeo4j implements AutoCloseable{
 
 
 
-*/
-}
+
+
