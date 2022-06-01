@@ -42,7 +42,8 @@ public class SaveMovieServlet extends HttpServlet {
 	 	
 	 	JSONArray insertionResult = new JSONArray();
 	 	
-	 	String nameHotel = request.getParameter("name");   
+	 	String nameHotel = request.getParameter("name");
+	 	String phoneHotel = String.valueOf(request.getParameter("phone"));
 		String breakfastHotel = String.valueOf(request.getParameter("breakfast"));
 	 	String calificationHotel = String.valueOf(request.getParameter("calification"));
 		String descriptionHotel = request.getParameter("description");
