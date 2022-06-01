@@ -56,7 +56,7 @@ public class SaveMovieServlet extends HttpServlet {
 	 	
 	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "test1234" ) )
 	        {
-			 	String myResultTx = neo4jDriver.insertHotel(nameHotel, idHotel, breakfastHotel, calificationHotel, descriptionHotel, petsHotel, placeHotel, poolHotel, priceHotel,wifiHotel);
+			 	String myResultTx = neo4jDriver.insertHotel(nameHotel, phoneHotel, breakfastHotel, calificationHotel, descriptionHotel, petsHotel, directionHotel, TypePlaceHotel, poolHotel, priceHotel,wifiHotel);
 	        	
 			 	myResponse.put("resultado", myResultTx);
 	        } catch (Exception e) {

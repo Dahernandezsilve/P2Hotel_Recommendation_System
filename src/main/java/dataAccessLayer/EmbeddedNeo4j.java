@@ -120,7 +120,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public String execute( Transaction tx )
                 {
-                    tx.run( "CREATE (n:Hotel {name:'" + name +", phone:" + phone +", breakfast:"+ breakfastHotel +", calification:"+ calificationHotel +", description:'"+ description + "', pets:"+ petsHotel +", direction:'"+ direction +", Type Place:'"+ TypePlace +"', pool:"+ poolHotel + ", price:"+ priceHotel +", wifi:"+ wifiHotel+"})");
+                    tx.run( "CREATE (n:Hotel {name:'" + name +"', phone:'" + phone +"', breakfast:"+ breakfastHotel +", calification:"+ calificationHotel +", description:'"+ description + "', pets:"+ petsHotel +", direction:'"+ direction +", Type Place:'"+ TypePlace +"', pool:"+ poolHotel + ", price:"+ priceHotel +", wifi:"+ wifiHotel+"})");
                     
                     return "OK";
                 }
