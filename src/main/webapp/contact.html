@@ -15,7 +15,7 @@
     <link media="all" rel="stylesheet" href="vendors/owl-carousel/dist/assets/owl.theme.default.min.css">
     <link media="all" rel="stylesheet" href="vendors/animate/animate.css">
     <link media="all" rel="stylesheet" href="vendors/rateyo/jquery.rateyo.css">
-    <link media="all" rel="stylesheet" href="vendors/bootstrap-datepicker/css/bootstrap-datepicker.css">
+	<!-- <link media="all" rel="stylesheet" href="vendors/bootstrap-datepicker/css/bootstrap-datepicker.css"> -->
     <link media="all" rel="stylesheet" href="vendors/fancyBox/source/jquery.fancybox.css">
     <link media="all" rel="stylesheet" href="vendors/fancyBox/source/helpers/jquery.fancybox-thumbs.css">
     <!-- Bootstrap 4 -->
@@ -108,7 +108,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <!-- contact form -->
-                                        <form action="#" method="post" id="contact_form" class="waituk_contact-form">
+                                        <form action="#" method="get" id="botones" class="waituk_contact-form">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -124,19 +124,36 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="text" placeholder="Usuario * " id="con_phone" name="con_phone" class="form-control">
+                                                        <input type="text" placeholder="Usuario * " id="cb_user" name="con_phone" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input type="password" placeholder="Contraseña * " id="con_phone" name="con_phone" class="form-control">
+                                                        <input type="password" placeholder="Contraseña * " id="cb_password" name="con_phone" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
-			                                <div class="form-group">
-                                                <textarea class="form-control" placeholder="Tienes algún comentario... *" id="con_message" name="con_message"></textarea>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                		<textarea class="form-control" placeholder="Tienes algún comentario... *" id="con_message" name="con_message"></textarea>
+                                           			</div>
+                                                </div>
                                             </div>
-                                        </form>
+			                                <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                		<select class="form-control form-control-lg" id="cb_typeplace">
+  															<option>Ciudad</option>
+  															<option>Playa</option>
+  															<option>Bosque</option>
+  															<option>Lago</option>
+  															<option>Zona turistica</option>
+														</select>
+                                           			</div>
+                                                </div>
+                                            </div>
+		                            	</form>
                                     </div>
                                     <div class="col-lg-6 col-xl-5 offset-xl-1">
                                         <div class="info-slot">
@@ -204,11 +221,22 @@
                                     <input id="ex4" type="text" data-slider-ticks="[0, 100, 200, 300, 400, 500]" data-slider-ticks-snap-bounds="30" data-slider-handle="square" data-slider-ticks-labels='["$0", "$100", "$200", "$300", "$400"]' />
                                 </div>
                             </div>
+                            
+							<div class="demo-wrapper content-block pb-0">
+                                <h3 class="text-center element-heading">¿Cuántas estrellas?</h3>
+                                <div class="rating-block">
+                                    <div id="rateYo-multi"></div>
+                                    <div class="text-center mt-4">
+                                        <p> </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="btn-container">
                                 <button id="btnCreateProfile" class="btn btn-primary btn-arrow">Crear perfil</button>
                                 <p id="error_message"> </p>
                             </div>
-                        </div>
+                    	</div>
                     </section>
                 </div>
                 <!--/main content wrapper -->
@@ -296,6 +324,7 @@
     <script src="js/jquery.validate.js"></script>
     <script src="js/mailchimp.js"></script>
     <script src="js/contact-form.js"></script>
+    <script src="js/botones.js"></script>
     <!-- REVOLUTION JS FILES -->
     <script type="text/javascript" src="vendors/rev-slider/revolution/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="vendors/rev-slider/revolution/js/jquery.themepunch.revolution.min.js"></script>
