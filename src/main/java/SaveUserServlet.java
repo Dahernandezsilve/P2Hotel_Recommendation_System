@@ -53,10 +53,11 @@ public class SaveUserServlet extends HttpServlet {
 		String priceU = String.valueOf(request.getParameter("price"));
 		String wifiU = String.valueOf(request.getParameter("wifi"));
 		String typeplaceU = request.getParameter("typeplace");
+		String petsU = request.getParameter("pets");
 	 	
 	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "test1234" ) )
 	        {
-			 	String myResultTx = neo4jDriver.insertUser(nameU, lastnameU, passwordU, userU, commentU, breakfastU, calificationU, poolU, priceU,wifiU, typeplaceU);
+			 	String myResultTx = neo4jDriver.insertUser(nameU, lastnameU, passwordU, userU, commentU, breakfastU, calificationU, petsU, poolU, priceU,wifiU, typeplaceU);
 	        	
 			 	myResponse.put("resultado", myResultTx);
 	        } catch (Exception e) {

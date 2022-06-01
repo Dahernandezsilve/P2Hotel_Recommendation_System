@@ -135,7 +135,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
 	 
        }
 
-	public String insertUser(String nameU, String lastnameU, String passwordU, String userU, String commentU,String breakfastU, String calificationU, String poolU, String priceU, String wifiU, String typeplaceU) {
+	public String insertUser(String nameU, String lastnameU, String passwordU, String userU, String commentU,String breakfastU, String calificationU, String petsU , String poolU, String priceU, String wifiU, String typeplaceU) {
 		try ( Session session = driver.session() )
         {
    		 
