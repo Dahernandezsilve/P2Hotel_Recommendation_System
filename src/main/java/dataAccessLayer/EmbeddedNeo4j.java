@@ -157,6 +157,28 @@ public class EmbeddedNeo4j implements AutoCloseable{
         	return e.getMessage();
         }
 	}
+	public String logIn(String user, String password)
+	{
+   	 try ( Session session = driver.session() )
+        {
+   		 
+   		String actors = session.writeTransaction( new TransactionWork<String>()
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    Result PassW = tx.run( "MATCH (n:usuarios {user: \"" + user + "\"}) RETURN n.password");
+                    String myactors = PassW.toString();
+                    return myactors;
+                    
+                }
+            } );
+            
+            return actors;
+        }catch (Exception e) {
+        	return e.getMessage();
+        }
+   }
   }
 
 //   http://localhost:8080/HelloWorld/SaveMovieServlet?name=HolidayInn&breakfast=true&id=15&calification=5&description=UnHotelMuyModernoEnElCentroDeLaCiudad&pets=true&place=CiudadDeGuatemala&pool=true&price=300&wifi=true
