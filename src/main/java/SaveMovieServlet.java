@@ -48,7 +48,8 @@ public class SaveMovieServlet extends HttpServlet {
 	 	String calificationHotel = String.valueOf(request.getParameter("calification"));
 		String descriptionHotel = request.getParameter("description");
 		String petsHotel = String.valueOf(request.getParameter("pets"));
-		String placeHotel = String.valueOf(request.getParameter("place"));
+		String directionHotel = String.valueOf(request.getParameter("direction"));
+		String TypePlaceHotel = String.valueOf(request.getParameter("TypePlace"));
 		String poolHotel = String.valueOf(request.getParameter("pool"));
 		String priceHotel = String.valueOf(request.getParameter("price"));
 		String wifiHotel = String.valueOf(request.getParameter("wifi"));
