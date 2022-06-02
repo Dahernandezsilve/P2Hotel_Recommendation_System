@@ -135,29 +135,29 @@ public class EmbeddedNeo4j implements AutoCloseable{
 	 
        }
 
-	public String insertUser(String nameU, String lastnameU, String passwordU, String userU, String commentU,String breakfastU, String calificationU, String petsU , String poolU, String priceU, String wifiU, String typeplaceU) {
-		try ( Session session = driver.session() )
-        {
-   		 
-   		 String result = session.writeTransaction( new TransactionWork<String>()
-   		 
-            {
-                @Override
-                public String execute( Transaction tx )
-                {
-                    tx.run( "CREATE (n:usuario {name:'" + nameU +"', lastname:'" + lastnameU +"', password:'"+ passwordU +"', user:'"+ userU +"', comment:'"+ commentU + "', calification:"+ calificationU +", pool:"+ poolU +", price:"+ poolU +", wifi:"+ wifiU + ", typeplace:'"+ typeplaceU +"'})");
-                    return "OK";
-                }
-            }
-   		 
-   		 );
-            
-            return result;
-        } catch (Exception e) {
-        	return e.getMessage();
-        }
-	}
-	
+   public String insertUser(String nameU, String lastnameU, String passwordU, String userU, String commentU,String breakfastU, String calificationU, String petsU , String poolU, String priceU, String wifiU, String typeplaceU) {
+   		try ( Session session = driver.session() )
+           {
+      		 
+      		 String result = session.writeTransaction( new TransactionWork<String>()
+      		 
+               {
+                   @Override
+                   public String execute( Transaction tx )
+                   {
+                       tx.run( "CREATE (n:usuario {name:'" + nameU +"', lastname:'" + lastnameU +"', password:'"+ passwordU +"', user:'"+ userU +"', comment:'"+ commentU + "', calification:'"+ calificationU +"', pool:'"+ poolU +"', price:"+ priceU +", wifi:'"+ wifiU + "', typeplace:'"+ typeplaceU +"', pets:'"+ petsU + "', breakfast:'"+ breakfastU + "'})");
+                       return "OK";
+                   }
+               }
+      		 
+      		 );
+               
+               return result;
+           } catch (Exception e) {
+           	return e.getMessage();
+           }
+   	}
+   	
 	public LinkedList<String> logIn(String user, String password)
 	{
    	 try ( Session session = driver.session() )
