@@ -222,17 +222,12 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 	Result result = tx.run( "MATCH (n:Hotel) Where not (:usuario {user:'dahernandez'})-[:visito]-(n:Hotel) RETURN n limit 12");
                     List<Record> registro = result.list();
                     List<String> registros = new ArrayList<String>();
-                    for (int i = 0; i < registro.size(); i++) {                   	
-                    	if(!(registro.get(0).get(i).isNull()) && !(registro.get(0).get(i).isEmpty())) {
-	                    	Map<String, Object> tempMap = registro.get(0).get(i).asMap();
-	                    	
-	                    	for (Map.Entry<String, Object> pair : tempMap.entrySet()) {
-	                    	    registros.add(pair.getValue().toString());
-	                    	}
-                    	}
+                    Map<String, Object> tempMap = registro.get(0).get(0).asMap();
+                    
+                    for (Map.Entry<String,Object> entry : tempMap.entrySet()) {
+                        registros.add(entry.getValue().toString());
                     }
-                    
-                    
+                   
                     return registros;
                 }
             } );
