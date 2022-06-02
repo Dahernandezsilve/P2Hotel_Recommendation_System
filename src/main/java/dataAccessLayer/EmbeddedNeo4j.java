@@ -208,21 +208,24 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
 	}
 
-	public List<String> getHotelByUser(String user) {
+	public List<Map<String, String>> getHotelByUser(String user) {
 		try ( Session session = driver.session() )
         {
    		 
    		 
-   		 List<String> hoteles = session.readTransaction( new TransactionWork<List<String>>()
+		List<Map<String,String>> hoteles = session.readTransaction( new TransactionWork<List<Map<String,String>>>()
             {
-                @Override
-                public List<String> execute( Transaction tx )
+				@Override
+                public List<Map<String,String>> execute( Transaction tx )
                 {
                 	Result result = tx.run( "MATCH (n:Hotel) Where not (:usuario {user:'dahernandez'})-[:visito]-(n:Hotel) RETURN n limit 12");
                     List<Record> registro = result.list();
-                    List<String> registros = registro.get(0).keys();
-                    registros.add("aaa");
-                    registros.add(registro.get(0).get(0).asMap().toString());
+                    List<Map<String,String>> registros = new ArrayList<Map<String, String>>();
+                    for (int i = 0; i < registro.size(); i++) {
+                    	registro.get(0).get(i).asMap();
+                    
+                    }
+                    
                     
                     return registros;
                 }
