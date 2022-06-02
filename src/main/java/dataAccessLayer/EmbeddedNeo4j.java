@@ -209,32 +209,42 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
 	}
 
-	public List<String> getHotelByUser(String user) {
-		try ( Session session = driver.session() )
+	public List<Map<String,String>> getHotelByUser(String user) {
+        try ( Session session = driver.session() )
         {
-   		 
-   		 
-			List<String> hoteles = session.readTransaction( new TransactionWork<List<String>>()
+
+
+            List<Map<String,String>> hoteles = session.readTransaction( new TransactionWork <List<Map<String,String>>>()
             {
-				@Override
-                public List<String> execute( Transaction tx )
+                @Override
+                public List<Map<String,String>> execute( Transaction tx )
                 {
-                	Result result = tx.run( "MATCH (n:Hotel) Where not (:usuario {user:'dahernandez'})-[:visito]-(n:Hotel) RETURN n limit 12");
+                    Result result = tx.run( "MATCH (n:Hotel) Where not (:usuario {user:'dahernandez'})-[:visito]-(n:Hotel) RETURN n limit 12");
                     List<Record> registro = result.list();
-                    List<String> registros = new ArrayList<String>();
-                    Map<String, Object> tempMap = registro.get(0).get(0).asMap();
-                    
-                    for (Map.Entry<String,Object> entry : tempMap.entrySet()) {
-                        registros.add(entry.getValue().toString());
+                    Map<String,String> registros = new HashMap<String,String>();
+                    List<Map<String,String>> Hola = new ArrayList<Map<String,String>>();
+                    for (int i = 0; i < registro.size(); i++) {
+                        Map<String, Object> tempMap = registro.get(0).get(i).asMap();
+ 	                    for (Map.Entry<String,Object> entry : tempMap.entrySet()) {
+	                        registros.put(entry.getKey(),entry.getValue().toString());
+	                    }
+ 	                    Hola.add(registros);
+
+
                     }
-                   
-                    return registros;
+                    
+	                return Hola;
+
+                    
+
+
+                 
                 }
             } );
-            
+
             return hoteles;
         }
-	}
+    }
 }
 	
 	

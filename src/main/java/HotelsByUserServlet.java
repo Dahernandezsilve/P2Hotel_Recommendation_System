@@ -45,15 +45,13 @@ public class HotelsByUserServlet extends HttpServlet {
 	 	
 	 	String user = request.getParameter("user");
 	 	
-	 	List<String> hoteles = null;
+	 	List<Map<String,String>> hoteles = null;
+	    
 	 	
 	 	try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "test1234" ) )
 	        {
 	 			hoteles = greeter.getHotelByUser(user);
-			 	for (int i = 0; i < hoteles.size(); i++) {
-                    //out.println( "<p>" + myactors.get(i) + "</p>" );
-                   HotelesRecomendados.add(hoteles.get(i));
-               }	        	
+	 			HotelesRecomendados.add(hoteles.size());
 	        } catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
