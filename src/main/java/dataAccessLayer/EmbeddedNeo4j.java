@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 /**
  * @author Administrator
  *
@@ -222,8 +223,14 @@ public class EmbeddedNeo4j implements AutoCloseable{
                     List<Record> registro = result.list();
                     List<Map<String,String>> registros = new ArrayList<Map<String, String>>();
                     for (int i = 0; i < registro.size(); i++) {
-                    	registro.get(0).get(i).asMap();
-                    
+                    	if(!(registro.get(0).get(i).isNull()) && !(registro.get(0).get(i).isEmpty())) {
+	                    	Map<String, Object> tempMap = registro.get(0).get(i).asMap();
+	                    	Map<String,String> tempMap2 = new HashMap<String,String>();
+	                    	for (Map.Entry<String, Object> pair : tempMap.entrySet()) {
+	                    	    tempMap2.put(pair.getKey(), pair.getValue().toString());
+	                    	}
+	                    	registros.add(tempMap2);
+                    	}
                     }
                     
                     
