@@ -3,7 +3,7 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
-
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,13 +42,13 @@ public class UserLogInServlet extends HttpServlet {
 	 	
 	 	JSONArray insertionResult = new JSONArray();
 	 	
-	 	String user = request.getParameter("name");
+	 	String user = request.getParameter("user");
 	 	String password = request.getParameter("password");   
 		
 	 	
 	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "test1234" ) )
 	        {
-	 		LinkedList<String> myResultTx = neo4jDriver.logIn(user,password);
+	 		List<String> myResultTx = neo4jDriver.logIn(user,password);
 	        	
 			 	myResponse.put("resultado", myResultTx);
 	        } catch (Exception e) {

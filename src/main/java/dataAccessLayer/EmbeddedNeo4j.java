@@ -15,6 +15,7 @@ import org.neo4j.driver.Value;
 
 import static org.neo4j.driver.Values.parameters;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 /**
@@ -159,28 +160,20 @@ public class EmbeddedNeo4j implements AutoCloseable{
            }
    	}
    	
-	public LinkedList<String> logIn(String user, String password)
+	public List<String> logIn(String user, String password)
 	{
    	 try ( Session session = driver.session() )
         {
    		 
-   		LinkedList<String> actors = session.writeTransaction( new TransactionWork<LinkedList<String>>()
+   		List<String> actors = session.writeTransaction( new TransactionWork<List<String>>()
             {
                 @Override
-                public LinkedList<String> execute( Transaction tx )
+                public List<String> execute( Transaction tx )
                 {
-                	Result PassW = tx.run("MATCH (n:usuario {user:'juanperez'}) RETURN n");
-                    List<Record> registros = PassW.list();
-                    LinkedList<String> myactors = new LinkedList<String>(); 
-                    for (int i = 0; i < registros.size(); i++) {
-                      	 //myactors.add(registros.get(i).toString());
-                    	List<Value> pps = registros.get(i).values();
-                    	for(int j = 0; j < pps.size(); j++) {
-                    		myactors.add(pps.get(j).asString());
-                    	}
-                       }
-                    
-                       
+                	Result PassW = tx.run("MATCH (n:usuario {user:'"+ user + "'}) RETURN n.password");
+                	List<Record> registros = PassW.list();
+                    List<String> myactors = new ArrayList<>();
+                    myactors.add(registros.get(0).values().get(0).asString());
                     return myactors;
                     
                 }
