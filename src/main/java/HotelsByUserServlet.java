@@ -44,16 +44,24 @@ public class HotelsByUserServlet extends HttpServlet {
 	 	JSONArray HotelesRecomendados = new JSONArray();
 	 	
 	 	String user = request.getParameter("user");
-	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "Test1234" ) )
+	 	
+	 	List<String> hoteles = null;
+	 	
+	 	try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "test1234" ) )
 	        {
-			 	List<String> hoteles = greeter.getHotelByUser(user);
-			 		        	
+	 			hoteles = greeter.getHotelByUser(user);
+			 	for (int i = 0; i < hoteles.size(); i++) {
+                    //out.println( "<p>" + myactors.get(i) + "</p>" );
+                   HotelesRecomendados.add(hoteles.get(i));
+               }	        	
 	        } catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				myResponse.put("resultado", "Error: " + e.getMessage());
 			}
 	 	
 	 	myResponse.put("Hoteles", HotelesRecomendados);
+	 	out.print(hoteles);
 	 	out.println(myResponse);
 	 	out.flush();  
 	}
