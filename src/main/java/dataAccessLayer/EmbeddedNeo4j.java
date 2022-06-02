@@ -221,10 +221,14 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 {
                     Result result = tx.run( "MATCH (n:Hotel) Where not (:usuario {user:'dahernandez'})-[:visito]-(n:Hotel) RETURN n limit 12");
                     List<Record> registro = result.list();
-                    Map<String,String> registros = new HashMap<String,String>();
+                    
                     List<Map<String,String>> Hola = new ArrayList<Map<String,String>>();
+                    Map<String,String> asize = new HashMap<String,String>();
+                    asize.put(user, String.valueOf(registro.get(1)));
+                    
                     for (int i = 0; i < registro.size(); i++) {
-                    	if (!registro.get(0).get(i).isNull() && !registro.get(0).get(i).isEmpty()) {
+                    	if (!registro.get(0).get(i).isNull()) {
+                    		Map<String,String> registros = new HashMap<String,String>();
 	                        Map<String, Object> tempMap = registro.get(0).get(i).asMap();
 	 	                    for (Map.Entry<String,Object> entry : tempMap.entrySet()) {
 		                        registros.put(entry.getKey(),entry.getValue().toString());
@@ -238,6 +242,26 @@ public class EmbeddedNeo4j implements AutoCloseable{
             return hoteles;
         }
     }
+
+	public String UserVisitoHotel(String user, String hotelname) {
+		try ( Session session = driver.session() )
+        {	 
+   		 String result = session.writeTransaction( new TransactionWork<String>() 
+            {
+                @Override
+                public String execute( Transaction tx )
+                {
+                    tx.run( "Match (a:usuario), (b:Hotel) where a.user='"+user+"' and b.name='"+hotelname+"' create (a)-[:visito]->(b)");
+                    return "OK";
+                }
+            }
+   		 
+   		 );     
+            return result;
+        } catch (Exception e) {
+        	return e.getMessage();
+        }
+	}
 }
 	
 	
