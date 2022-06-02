@@ -57,11 +57,9 @@ public class UserLogInServlet extends HttpServlet {
 				myResponse.put("resultado", "Error: " + e.getMessage());
 			}
 	 	
-	 	 for (int i = 0; i < myResponse.size(); i++) {
-	            out.println(myResponse.get(i));
-	        }
+	 	out.println(myResponse.toString());
+        out.flush();
 	 	
-	 	out.flush();
 	}
 
 	/**
