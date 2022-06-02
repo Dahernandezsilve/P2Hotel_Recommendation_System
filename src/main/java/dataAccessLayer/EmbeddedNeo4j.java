@@ -168,16 +168,12 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public LinkedList<String> execute( Transaction tx )
                 {
-                    Result PassW = tx.run("MATCH (n:usuarios {user: \"" + user + "\"}) RETURN n.password");
+                	Result PassW = tx.run("MATCH (n:usuario {user:'juanperez'}) RETURN n");
                     List<Record> registros = PassW.list();
-                    System.out.println("1"+registros.toString());
-                    System.out.println();
                     LinkedList<String> myactors = new LinkedList<String>(); 
                     for (int i = 0; i < registros.size(); i++) {
-                   	 //myactors.add(registros.get(i).toString());
-                    	System.out.println("2"+registros.get(i).toString());
-                    	System.out.println("3"+registros.get(i).get("password").asString());
-                   	 myactors.add(registros.get(i).get("password").asString());
+                        //myactors.add(registros.get(i).toString());
+                        myactors.add(registros.get(i).values().toString());
                     }
                        
                     return myactors;
