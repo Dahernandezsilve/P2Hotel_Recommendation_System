@@ -163,17 +163,21 @@ public class EmbeddedNeo4j implements AutoCloseable{
    	 try ( Session session = driver.session() )
         {
    		 
-   		LinkedList<String> actors = session.writeTransaction( new TransactionWork<String>()
+   		LinkedList<String> actors = session.writeTransaction( new TransactionWork<LinkedList<String>>()
             {
                 @Override
                 public LinkedList<String> execute( Transaction tx )
                 {
-                    Result PassW = tx.run( "MATCH (n:usuarios) WHERE n.user='"+ user +"' RETURN n.password");
+                    Result PassW = tx.run("MATCH (n:usuarios {user: \"" + user + "\"}) RETURN n.password");
                     List<Record> registros = PassW.list();
-                    LinkedList<String> myactors = new LinkedList<String>();
+                    System.out.println("1"+registros.toString());
+                    System.out.println();
+                    LinkedList<String> myactors = new LinkedList<String>(); 
                     for (int i = 0; i < registros.size(); i++) {
                    	 //myactors.add(registros.get(i).toString());
-                   	 myactors.add(registros.get(i).get("n.password").asString());
+                    	System.out.println("2"+registros.get(i).toString());
+                    	System.out.println("3"+registros.get(i).get("password").asString());
+                   	 myactors.add(registros.get(i).get("password").asString());
                     }
                        
                     return myactors;
@@ -181,10 +185,9 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 }
             } );
             return actors;
-        }catch (Exception e) {
-        	return e.getMessage();
+               
         }
-   } 
+	}
 }
 	
 	
