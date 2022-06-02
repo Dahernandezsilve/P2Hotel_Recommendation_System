@@ -2,6 +2,7 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.LinkedList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,7 +48,7 @@ public class UserLogInServlet extends HttpServlet {
 	 	
 	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "test1234" ) )
 	        {
-			 	String myResultTx = neo4jDriver.logIn(user,password);
+	 		LinkedList<String> myResultTx = neo4jDriver.logIn(user,password);
 	        	
 			 	myResponse.put("resultado", myResultTx);
 	        } catch (Exception e) {
@@ -56,8 +57,10 @@ public class UserLogInServlet extends HttpServlet {
 				myResponse.put("resultado", "Error: " + e.getMessage());
 			}
 	 	
+	 	 for (int i = 0; i < myResponse.size(); i++) {
+	            out.println(myResponse.get(i));
+	        }
 	 	
-	 	out.println(myResponse);
 	 	out.flush();
 	}
 
