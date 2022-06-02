@@ -223,9 +223,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                     List<Record> registro = result.list();
                     
                     List<Map<String,String>> Hola = new ArrayList<Map<String,String>>();
-                    Map<String,String> asize = new HashMap<String,String>();
-                    asize.put(user, String.valueOf(registro.get(1)));
-                    
+                    Map<String,String> asize = new HashMap<String,String>();                    
                     for (int i = 0; i < registro.size(); i++) {
                     	if (!registro.get(0).get(i).isNull()) {
                     		Map<String,String> registros = new HashMap<String,String>();
@@ -260,6 +258,33 @@ public class EmbeddedNeo4j implements AutoCloseable{
             return result;
         } catch (Exception e) {
         	return e.getMessage();
+        }
+	}
+
+	public Map<String, String> getUserProperties(String user) {
+		try ( Session session = driver.session() )
+        {
+
+			Map<String, String> actors = session.readTransaction( new TransactionWork<Map<String, String>>()
+            {
+                @Override
+                public Map<String, String> execute( Transaction tx )
+                {
+                    Result result = tx.run( "MATCH (n:usuario) RETURN n.user");
+                    List<Record> registros = result.list();
+                    Map<String, Object> tempMap = registros.get(0).asMap();
+                    Map<String, String> myactors = new HashMap<String,String>();
+                    myactors.put(user, String.valueOf(tempMap.size()));
+                    
+                    for (Map.Entry<String,Object> entry : tempMap.entrySet()) {
+                        myactors.put(entry.getKey(),entry.getValue().toString());
+                    }
+                    
+                    return myactors;
+                }
+            } );
+            
+            return actors;
         }
 	}
 }

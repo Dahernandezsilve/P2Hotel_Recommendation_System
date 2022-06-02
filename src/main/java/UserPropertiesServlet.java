@@ -1,11 +1,20 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+import dataAccessLayer.EmbeddedNeo4j;
 
 /**
  * Servlet implementation class UserPropertiesServlet
@@ -27,7 +36,28 @@ public class UserPropertiesServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+				PrintWriter out = response.getWriter();
+			 	response.setContentType("application/json");
+			 	response.setCharacterEncoding("UTF-8");
+			 	JSONObject myResponse = new JSONObject();
+			 	
+			 	JSONArray insertionResult = new JSONArray();
+			 	
+			 	String user = request.getParameter("user");   
+					 	
+			 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "test1234" ) )
+			        {
+			 		Map<String,String> myResultTx = neo4jDriver.getUserProperties(user);
+			        	
+					 	myResponse.put("resultado", myResultTx);
+			        } catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						myResponse.put("resultado", "Error: " + e.getMessage());
+					}
+			 	
+			 	out.println(myResponse.toString());
+		        out.flush();
 	}
 
 	/**
