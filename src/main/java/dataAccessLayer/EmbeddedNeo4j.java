@@ -16,8 +16,10 @@ import org.neo4j.driver.Value;
 import static org.neo4j.driver.Values.parameters;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 /**
  * @author Administrator
  *
@@ -203,6 +205,35 @@ public class EmbeddedNeo4j implements AutoCloseable{
             } );
             return actors;
                
+        }
+	}
+
+	public LinkedList<Map<String,String>> getHotelByUser(String user) {
+		try ( Session session = driver.session() )
+        {
+   		 
+   		 
+   		 LinkedList<Map<String,String>> hoteles = session.readTransaction( new TransactionWork<LinkedList<Map<String,String>>>()
+            {
+                @Override
+                public LinkedList<Map<String,String>> execute( Transaction tx )
+                {
+                    Result result = tx.run( "MATCH (tom:Person {name: \"" + user + "\"})-[:ACTED_IN]->(actorMovies) RETURN actorMovies.title");
+                    LinkedList<Map<String,String>> hotelEncontrado = new LinkedList<Map<String,String>>();
+                    List<Record> registros = result.list();
+                    for (int i = 0; i < registros.size(); i++) {
+                   	 Map<String,String> hotelTemp = new HashMap<String, String>();
+                   	 for (int j = 0; j < registros.get(i).size(); j++) {
+                   	 hotelTemp.put(registros.get(i).get(j).keys().toString(), registros.get(i).get(j).asString());
+                   	 }
+                   	 hotelEncontrado.add(hotelTemp);
+                    }
+                    
+                    return hotelEncontrado;
+                }
+            } );
+            
+            return hoteles;
         }
 	}
 }
