@@ -11,6 +11,7 @@ import org.neo4j.driver.Result;
 import org.neo4j.driver.Session;
 import org.neo4j.driver.Transaction;
 import org.neo4j.driver.TransactionWork;
+import org.neo4j.driver.Value;
 
 import static org.neo4j.driver.Values.parameters;
 
@@ -172,9 +173,13 @@ public class EmbeddedNeo4j implements AutoCloseable{
                     List<Record> registros = PassW.list();
                     LinkedList<String> myactors = new LinkedList<String>(); 
                     for (int i = 0; i < registros.size(); i++) {
-                        //myactors.add(registros.get(i).toString());
-                        myactors.add(registros.get(i).values().toString());
-                    }
+                      	 //myactors.add(registros.get(i).toString());
+                    	List<Value> pps = registros.get(i).values();
+                    	for(int j = 0; j < pps.size(); j++) {
+                    		myactors.add(pps.get(j).asString());
+                    	}
+                       }
+                    
                        
                     return myactors;
                     
