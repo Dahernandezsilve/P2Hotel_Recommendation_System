@@ -219,10 +219,12 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 public List<String> execute( Transaction tx )
                 {
                 	Result result = tx.run( "MATCH (n:Hotel) Where not (:usuario {user:'dahernandez'})-[:visito]-(n:Hotel) RETURN n");
-                    List<String> registros = result.keys();
-                    registros.add("hola");
-                    
-
+                    List<Record> registro = result.list();
+                    List<String> registros = registro.get(0).keys();
+                    registros.add("aaa");
+                    registros.add(registro.get(0).get(0).asString());
+                   
+                  
                     return registros;
                 }
             } );
