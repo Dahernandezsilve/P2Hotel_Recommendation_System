@@ -208,28 +208,20 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
 	}
 
-	public LinkedList<Map<String,String>> getHotelByUser(String user) {
+	public List<String> getHotelByUser(String user) {
 		try ( Session session = driver.session() )
         {
    		 
    		 
-   		 LinkedList<Map<String,String>> hoteles = session.readTransaction( new TransactionWork<LinkedList<Map<String,String>>>()
+   		 List<String> hoteles = session.readTransaction( new TransactionWork<List<String>())
             {
                 @Override
-                public LinkedList<Map<String,String>> execute( Transaction tx )
+                public List<String> execute( Transaction tx )
                 {
-                    Result result = tx.run( "MATCH (n:Hotel) Where not (:usuario {user:'dahernandez'})-[:visito]-(n:Hotel) RETURN n");
-                    LinkedList<Map<String,String>> hotelEncontrado = new LinkedList<Map<String,String>>();
-                    List<Record> registros = result.list();
-                    for (int i = 0; i < registros.size(); i++) {
-                   	 Map<String,String> hotelTemp = new HashMap<String, String>();
-                   	 for (int j = 0; j < registros.get(i).size(); j++) {
-                   	 hotelTemp.put(registros.get(i).get(j).keys().toString(), registros.get(i).get(j).asString());
-                   	 }
-                   	 hotelEncontrado.add(hotelTemp);
-                    }
-                    
-                    return hotelEncontrado;
+                    Result result = tx.run( "MATCH (n:Hotel) Where not (:usuario {user:'dahernandez'})-[:visito]-(n:Hotel) RETURN n");                    
+                    List<String> registros = result.keys();
+                                        
+                    return registros;
                 }
             } );
             
