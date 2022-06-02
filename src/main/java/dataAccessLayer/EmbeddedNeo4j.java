@@ -270,11 +270,10 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public Map<String, String> execute( Transaction tx )
                 {
-                    Result result = tx.run( "MATCH (n:usuario) RETURN n.user");
+                    Result result = tx.run( "MATCH (n:usuario) WHERE n.user = '"+user+"' RETURN n");
                     List<Record> registros = result.list();
-                    Map<String, Object> tempMap = registros.get(0).asMap();
+                    Map<String, Object> tempMap = registros.get(0).get(0).asMap();
                     Map<String, String> myactors = new HashMap<String,String>();
-                    myactors.put(user, String.valueOf(tempMap.size()));
                     
                     for (Map.Entry<String,Object> entry : tempMap.entrySet()) {
                         myactors.put(entry.getKey(),entry.getValue().toString());
