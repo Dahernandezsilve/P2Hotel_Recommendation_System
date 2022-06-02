@@ -224,24 +224,17 @@ public class EmbeddedNeo4j implements AutoCloseable{
                     Map<String,String> registros = new HashMap<String,String>();
                     List<Map<String,String>> Hola = new ArrayList<Map<String,String>>();
                     for (int i = 0; i < registro.size(); i++) {
-                        Map<String, Object> tempMap = registro.get(0).get(i).asMap();
- 	                    for (Map.Entry<String,Object> entry : tempMap.entrySet()) {
-	                        registros.put(entry.getKey(),entry.getValue().toString());
-	                    }
- 	                    Hola.add(registros);
-
-
+                    	if (!registro.get(0).get(i).isNull() && !registro.get(0).get(i).isEmpty()) {
+	                        Map<String, Object> tempMap = registro.get(0).get(i).asMap();
+	 	                    for (Map.Entry<String,Object> entry : tempMap.entrySet()) {
+		                        registros.put(entry.getKey(),entry.getValue().toString());
+		                    }
+	 	                    Hola.add(registros);
+                    	}
                     }
-                    
 	                return Hola;
-
-                    
-
-
-                 
                 }
             } );
-
             return hoteles;
         }
     }
