@@ -145,7 +145,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public String execute( Transaction tx )
                 {
-                    tx.run( "CREATE (n:usuario {name:'" + nameU +"', lastname:'" + lastnameU +"', password:'"+ passwordU +"', user:'"+ userU +"', comment:'"+ commentU + "', calification:"+ calificationU +", pool:"+ poolU +", price:"+ poolU +", wifi:"+ wifiU + ", typeplace:'"+ typeplaceU +"'})");
+                    tx.run( "CREATE (n:usuario {name:'" + nameU +"', lastname:'" + lastnameU +"', password:'"+ passwordU +"', user:'"+ userU +"', comment:'"+ commentU + "', calification:'"+ calificationU +"', pool:'"+ poolU +"', price:'"+ priceU +"', wifi:'"+ wifiU + "', typeplace:'"+ typeplaceU +"'})");
                     return "OK";
                 }
             }
