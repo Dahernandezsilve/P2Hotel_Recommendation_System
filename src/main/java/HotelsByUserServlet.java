@@ -3,6 +3,7 @@
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -45,7 +46,7 @@ public class HotelsByUserServlet extends HttpServlet {
 	 	String user = request.getParameter("user");
 	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "Test1234" ) )
 	        {
-			 	LinkedList<Map<String,String>> hoteles = greeter.getHotelByUser(user);
+			 	List<String> hoteles = greeter.getHotelByUser(user);
 			 		        	
 	        } catch (Exception e) {
 				// TODO Auto-generated catch block
