@@ -170,10 +170,18 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public List<String> execute( Transaction tx )
                 {
-                	Result PassW = tx.run("MATCH (n:usuario {user:'"+ user + "'}) RETURN n.password");
-                	List<Record> registros = PassW.list();
+                	Result PassW = tx.run("MATCH (n:usuario {user:'"+ user +"'}) RETURN n.password");
+                    List<Record> registros = PassW.list();
                     List<String> myactors = new ArrayList<>();
-                    myactors.add(registros.get(0).values().get(0).asString());
+                    String tPass = registros.get(0).values().get(0).asString();
+                    if(tPass.equals(password)) {
+                    myactors.add("true");	
+                    }
+                    else {
+                    	myactors.add("false");
+                    }
+                    myactors.add(user);
+               
                     return myactors;
                     
                 }
