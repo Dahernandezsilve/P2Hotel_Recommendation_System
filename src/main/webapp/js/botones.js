@@ -24,7 +24,8 @@
 
 		url: '/Ohtell/UserLogInServlet?user=' + $('#cb_user_si').val() + '&password=' + $('#cb_password_si').val(),
 			success: function(data) {
-			    alert("Resultado: " + data.resultado);
+				alert("Resultado: " + data.resultado);
+				location.href = 'portfolio-3-col.html';
 			}
 		} );
 		
