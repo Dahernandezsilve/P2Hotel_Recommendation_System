@@ -286,6 +286,33 @@ public class EmbeddedNeo4j implements AutoCloseable{
             return actors;
         }
 	}
+	
+	
+	public Map<String, String> getHotelProperties(String name) {
+		try ( Session session = driver.session() )
+        {
+
+			Map<String, String> actors = session.readTransaction( new TransactionWork<Map<String, String>>()
+            {
+                @Override
+                public Map<String, String> execute( Transaction tx )
+                {
+                    Result result = tx.run( "MATCH (n:Hotel) WHERE n.name = '"+name+"' RETURN n");
+                    List<Record> registros = result.list();
+                    Map<String, Object> tempMap = registros.get(0).get(0).asMap();
+                    Map<String, String> myactors = new HashMap<String,String>();
+                    
+                    for (Map.Entry<String,Object> entry : tempMap.entrySet()) {
+                        myactors.put(entry.getKey(),entry.getValue().toString());
+                    }
+                    
+                    return myactors;
+                }
+            } );
+            
+            return actors;
+        }
+	}
 }
 	
 	
