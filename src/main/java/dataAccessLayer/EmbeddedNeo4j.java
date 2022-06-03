@@ -219,18 +219,23 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public List<Map<String,String>> execute( Transaction tx )
                 {
-                    Result result = tx.run( "MATCH (n:Hotel) Where not (:usuario {user:'dahernandez'})-[:visito]-(n:Hotel) RETURN n limit 12");
+                    Result result = tx.run( "MATCH (n:Hotel) Where not (:usuario {user:'"+user+"'})-[:visito]-(n:Hotel) RETURN n limit 12");
                     List<Record> registro = result.list();
                     
                     List<Map<String,String>> Hola = new ArrayList<Map<String,String>>();
-                    Map<String,String> asize = new HashMap<String,String>();                    
+                    Map<String,String> asize = new HashMap<String,String>();  
+                    asize.put(user,String.valueOf(registro.get(0).size()));
+                    Hola.add(asize);
                     for (int i = 0; i < registro.size(); i++) {
-                    	if (!registro.get(0).get(i).isNull()) {
+                    	if (!registro.get(i).get(0).isNull()) {
                     		Map<String,String> registros = new HashMap<String,String>();
-	                        Map<String, Object> tempMap = registro.get(0).get(i).asMap();
+	                        Map<String, Object> tempMap = registro.get(i).get(0).asMap();
 	 	                    for (Map.Entry<String,Object> entry : tempMap.entrySet()) {
 		                        registros.put(entry.getKey(),entry.getValue().toString());
 		                    }
+	 	                    asize.put("size registro",String.valueOf(registro.size()));
+	 	                    asize.put("size registro 1",String.valueOf(registro.get(0).size()));
+	 	                    asize.put("size registro 2",String.valueOf(registro.get(0).get(0).size()));
 	 	                    Hola.add(registros);
                     	}
                     }

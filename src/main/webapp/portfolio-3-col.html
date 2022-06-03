@@ -29,7 +29,12 @@
     <!-- Custom CSS -->
 </head>
 
-<body>
+ <body onload="loaded();">
+    <div id="div1">
+
+    </div>
+    <input type="text" id="name1">
+    <input type="text" id="name2">
     <!-- main wrapper -->
     <div id="wrapper">
         <div class="page-wrapper">
@@ -92,12 +97,12 @@
                         <div class="centered">
                             <div class="container">
                                 <div class="visual-text visual-center">
-                                    <h1 class="visual-title visual-sub-title text-white">Portfolio - Boxed Grid</h1>
+                                    <h1 class="visual-title visual-sub-title text-white">TUS RECOMENDACIONES</h1>
                                     <div class="breadcrumb-block">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html"> Home </a></li>
-                                            <li class="breadcrumb-item"><a href="#"> Protfolio </a></li>
-                                            <li class="breadcrumb-item active"> Grid </li>
+                                            <li class="breadcrumb-item"><a href="index.html"> Viajes </a></li>
+                                            <li class="breadcrumb-item"><a href="#"> Destinos </a></li>
+                                            <li class="breadcrumb-item active"> Un solo lugar </li>
                                         </ol>
                                     </div>
                                 </div>
@@ -109,40 +114,22 @@
                 <!-- main content wrapper -->
                 <div class="content-wrapper">
                     <section class="content-block portfolio-block">
-                        <ul class="filter-nav filter-nav-v2 text-center button-group filter-button-group">
-                            <li>
-                                <button class="is-checked" data-filter="*">ALL WORK</button>
-                            </li>
-                            <li>
-                                <button data-filter=".ui">UI/UX DESIGN</button>
-                            </li>
-                            <li>
-                                <button data-filter=".programming">PROGRAMMING</button>
-                            </li>
-                            <li>
-                                <button data-filter=".photography">PHOTOGRAPHY</button>
-                            </li>
-                            <li>
-                                <button data-filter=".ecommerce">ECOMMERCE</button>
-                            </li>
-                        </ul>
-                        <div class="col-lg-4" id="r2">
-                                                    
+                        <div class="col-lg-4" id="r2">                          
                         </div>
                         <div class="container">
                             <div class="row masonary-block grid">
                                 <div class="gallery-item col-lg-6 col-xl-4 ui photography">
                                     <figure class="caption-hover-full">
                                         <a class="fancy-pop" href="portfolio-single.html"></a>
-                                        <div class="image-wrapper"><img src="img/portfolio-21.jpg" alt="images description"></div>
+                                        <div class="image-wrapper"><img src="img/portfolio-21.jpg"  id="url_img" alt="images description"></div>
                                         <div class="image-details">
                                             <div class="figcaption">
                                                 <div class="trigger">
                                                     <div class="custom-icon-plus"><span class="sr-only">&nbsp;</span></div>
                                                 </div>
                                                 
-                                                <div class="info">
-                                                    <h2 class="content-title">Awesome Project</h2>
+                                                <div class="info" id="nameR">
+                                                    <h2 class="content-title" id="nameR"></h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -354,7 +341,7 @@
     <script src="js/mega-menu.js"></script>
     <!-- custom jquery script -->
     <script src="js/jquery.main.js"></script>
-    <script src="js/botones.js"></script>
+    <!---<script src="js/botones.js"></script>-->
     <!-- REVOLUTION JS FILES -->
     <script type="text/javascript" src="vendors/rev-slider/revolution/js/jquery.themepunch.tools.min.js"></script>
     <script type="text/javascript" src="vendors/rev-slider/revolution/js/jquery.themepunch.revolution.min.js"></script>
@@ -373,5 +360,20 @@
     <!-- revolutions slider script -->
     <script src="js/revolution.js"></script>
 </body>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js%22%3E"></script>
+    <script>
+    $(document).ready(function()  {
+        alert("a");
+        var name1 =1;
+        var name2 =2;
+        $.ajax({url: '/Ohtell1/HotelsByUserServlet?user=dahernandez', success: function(result){
+            name1 =5;
+            alert("0");
+            var hoteles = result.Hoteles;
+            name1 = hoteles[1].get("name");
+            document.getElementById('name1').value= name1;
+        }});
+       
+    });
+    </script> 
 </html>

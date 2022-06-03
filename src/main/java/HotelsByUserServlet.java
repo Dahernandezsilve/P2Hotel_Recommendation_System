@@ -51,7 +51,7 @@ public class HotelsByUserServlet extends HttpServlet {
 	 	try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "test1234" ) )
 	        {
 	 			hoteles = greeter.getHotelByUser(user);
-	 			HotelesRecomendados.add(hoteles.size());
+	 			HotelesRecomendados.add(hoteles);
 	        } catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -59,7 +59,6 @@ public class HotelsByUserServlet extends HttpServlet {
 			}
 	 	
 	 	myResponse.put("Hoteles", HotelesRecomendados);
-	 	out.print(hoteles);
 	 	out.println(myResponse);
 	 	out.flush();  
 	}
