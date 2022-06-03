@@ -45,7 +45,7 @@ public class HotelsByUserServlet extends HttpServlet {
 	 	
 	 	String user = request.getParameter("user");
 	 	
-	 	List<Map<String,String>> hoteles = null;
+	 	List<String> hoteles = null;
 	    
 	 	
 	 	try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://localhost:7687", "neo4j", "test1234" ) )
