@@ -238,6 +238,38 @@
                                         </div>
                                     </figure>
                                 </div>
+                                <div class="gallery-item col-lg-6 col-xl-4 ecommerce">
+                                    <figure class="caption-hover-full">
+                                        <a class="fancy-pop"  id="btn1" ></a>
+                                        <div class="image-wrapper"><img src="img/portfolio-29.jpg" alt="images description"></div>
+                                       <div class="image-details">
+                                            <div class="figcaption">
+                                                <div class="trigger">
+                                                    <div class="custom-icon-plus"><span class="sr-only">&nbsp;</span></div>
+                                                </div>
+                                                <div class="info" id="div-listado-actores9">
+                                                  
+                                                 </div>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </div>
+                                <div class="gallery-item col-lg-6 col-xl-4 ecommerce">
+                                    <figure class="caption-hover-full">
+                                        <a class="fancy-pop"  id="btn1" ></a>
+                                        <div class="image-wrapper"><img src="img/portfolio-29.jpg" alt="images description"></div>
+                                       <div class="image-details">
+                                            <div class="figcaption">
+                                                <div class="trigger">
+                                                    <div class="custom-icon-plus"><span class="sr-only">&nbsp;</span></div>
+                                                </div>
+                                                <div class="info" id="div-listado-actores9">
+                                                  
+                                                 </div>
+                                            </div>
+                                        </div>
+                                    </figure>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -344,6 +376,7 @@
 </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js%22%3E"></script>
     <script>
+
     $(document).ready(function()  {
         alert("a");
         var name1 =0;
@@ -365,8 +398,7 @@
 
     });
 
-
-    $("#btn1").click(function(){
+    $("#btn9").click(function(){
         var name2 =2;
         var name = 0;
         var name3 = 0;
@@ -383,7 +415,216 @@
                 });
             }
         });
-    });    
+    }); 
+    
+    $("#btn1").click(function(){
+        var name2 =2;
+        var name = 0;
+        var name3 = 0;
+        $.ajax({url: '/Ohtell1/HotelsByUserServlet?user=dahernandez', success: function(result){
+            $.each(result.Hoteles, function(i,item){
+                name2 = item[0];
+                alert(name2);
+                });
+
+                $.ajax({url: '/Ohtell1/ArcVisitoServlet?user=dahernandez&hotelname=' + name2, success: function(result){
+                    alert("ok");
+                    alert(name2);
+                    }
+                });
+            }
+        });
+    }); 
+
+    $("#btn2").click(function(){
+        var name2 =2;
+        var name = 0;
+        var name3 = 0;
+        $.ajax({url: '/Ohtell1/HotelsByUserServlet?user=dahernandez', success: function(result){
+            $.each(result.Hoteles, function(i,item){
+                name2 = item[1];
+                alert(name2);
+                });
+
+                $.ajax({url: '/Ohtell1/ArcVisitoServlet?user=dahernandez&hotelname=' + name2, success: function(result){
+                    alert("ok");
+                    alert(name2);
+                    }
+                });
+            }
+        });
+    }); 
+
+    $("#btn3").click(function(){
+        var name2 =2;
+        var name = 0;
+        var name3 = 0;
+        $.ajax({url: '/Ohtell1/HotelsByUserServlet?user=dahernandez', success: function(result){
+            $.each(result.Hoteles, function(i,item){
+                name2 = item[2];
+                alert(name2);
+                });
+
+                $.ajax({url: '/Ohtell1/ArcVisitoServlet?user=dahernandez&hotelname=' + name2, success: function(result){
+                    alert("ok");
+                    alert(name2);
+                    }
+                });
+            }
+        });
+    }); 
+
+    $("#btn4").click(function(){
+        var name2 =2;
+        var name = 0;
+        var name3 = 0;
+        $.ajax({url: '/Ohtell1/HotelsByUserServlet?user=dahernandez', success: function(result){
+            $.each(result.Hoteles, function(i,item){
+                name2 = item[3];
+                alert(name2);
+                });
+
+                $.ajax({url: '/Ohtell1/ArcVisitoServlet?user=dahernandez&hotelname=' + name2, success: function(result){
+                    alert("ok");
+                    alert(name2);
+                    }
+                });
+            }
+        });
+    }); 
+
+    $("#btn5").click(function(){
+        var name2 =2;
+        var name = 0;
+        var name3 = 0;
+        $.ajax({url: '/Ohtell1/HotelsByUserServlet?user=dahernandez', success: function(result){
+            $.each(result.Hoteles, function(i,item){
+                name2 = item[4];
+                alert(name2);
+                });
+
+                $.ajax({url: '/Ohtell1/ArcVisitoServlet?user=dahernandez&hotelname=' + name2, success: function(result){
+                    alert("ok");
+                    alert(name2);
+                    }
+                });
+            }
+        });
+    }); 
+
+    $("#btn6").click(function(){
+        var name2 =2;
+        var name = 0;
+        var name3 = 0;
+        $.ajax({url: '/Ohtell1/HotelsByUserServlet?user=dahernandez', success: function(result){
+            $.each(result.Hoteles, function(i,item){
+                name2 = item[5];
+                alert(name2);
+                });
+
+                $.ajax({url: '/Ohtell1/ArcVisitoServlet?user=dahernandez&hotelname=' + name2, success: function(result){
+                    alert("ok");
+                    alert(name2);
+                    }
+                });
+            }
+        });
+    }); 
+
+    $("#btn7").click(function(){
+        var name2 =2;
+        var name = 0;
+        var name3 = 0;
+        $.ajax({url: '/Ohtell1/HotelsByUserServlet?user=dahernandez', success: function(result){
+            $.each(result.Hoteles, function(i,item){
+                name2 = item[6];
+                alert(name2);
+                });
+
+                $.ajax({url: '/Ohtell1/ArcVisitoServlet?user=dahernandez&hotelname=' + name2, success: function(result){
+                    alert("ok");
+                    alert(name2);
+                    }
+                });
+            }
+        });
+    }); 
+
+    $("#btn9").click(function(){
+        var name2 =2;
+        var name = 0;
+        var name3 = 0;
+        $.ajax({url: '/Ohtell1/HotelsByUserServlet?user=dahernandez', success: function(result){
+            $.each(result.Hoteles, function(i,item){
+                name2 = item[8];
+                alert(name2);
+                });
+
+                $.ajax({url: '/Ohtell1/ArcVisitoServlet?user=dahernandez&hotelname=' + name2, success: function(result){
+                    alert("ok");
+                    alert(name2);
+                    }
+                });
+            }
+        });
+    }); 
+
+    $("#btn10").click(function(){
+        var name2 =2;
+        var name = 0;
+        var name3 = 0;
+        $.ajax({url: '/Ohtell1/HotelsByUserServlet?user=dahernandez', success: function(result){
+            $.each(result.Hoteles, function(i,item){
+                name2 = item[9];
+                alert(name2);
+                });
+
+                $.ajax({url: '/Ohtell1/ArcVisitoServlet?user=dahernandez&hotelname=' + name2, success: function(result){
+                    alert("ok");
+                    alert(name2);
+                    }
+                });
+            }
+        });
+    }); 
+
+    $("#btn11").click(function(){
+        var name2 =2;
+        var name = 0;
+        var name3 = 0;
+        $.ajax({url: '/Ohtell1/HotelsByUserServlet?user=dahernandez', success: function(result){
+            $.each(result.Hoteles, function(i,item){
+                name2 = item[10];
+                alert(name2);
+                });
+
+                $.ajax({url: '/Ohtell1/ArcVisitoServlet?user=dahernandez&hotelname=' + name2, success: function(result){
+                    alert("ok");
+                    alert(name2);
+                    }
+                });
+            }
+        });
+    }); 
+
+    $("#btn12").click(function(){
+        var name2 =2;
+        var name = 0;
+        var name3 = 0;
+        $.ajax({url: '/Ohtell1/HotelsByUserServlet?user=dahernandez', success: function(result){
+            $.each(result.Hoteles, function(i,item){
+                name2 = item[11];
+                alert(name2);
+                });
+
+                $.ajax({url: '/Ohtell1/ArcVisitoServlet?user=dahernandez&hotelname=' + name2, success: function(result){
+                    alert("ok");
+                    alert(name2);
+                    }
+                });
+            }
+        });
+    }); 
     
     </script>
      
