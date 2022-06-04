@@ -38,37 +38,10 @@
 	});
 
 
-	window.onload = (function(){
-		//alert("The button was clicked 1");
-				
-		$.ajax( {
-			
-			type: "GET",
-			url: '/Ohtell1/HotelsByUserServlet?user=dahernandez',
-			success: function(data) {
-				//alert("Result" + data.resultado);
-			    var hoteles = data.hoteles;
-      			var name1 = hoteles[1].get("name");
-				var name2 = hoteles[2].get("name");
-				var name3 = hoteles[3].get("name");
-				var name4 = hoteles[4].get("name");
-				var name5 = hoteles[5].get("name");
-				var name6 = hoteles[6].get("name");
-				var name7 = hoteles[7].get("name");
-				var name8 = hoteles[8].get("name");
-				var name9 = hoteles[9].get("name");
-				var name10 = hoteles[10].get("name");
-				var name11 = hoteles[11].get("name");
-				var name11 = hoteles[12].get("name");
+	
 
-				document.getElementById('name1').value= name1;
-				document.getElementById('name2').value = name2;
-				document.getElementById('name3').value = name3;
-			}
-		} );
-		
-		
-	});
+
+	
 	
 })(jQuery); // End of use strict
 
