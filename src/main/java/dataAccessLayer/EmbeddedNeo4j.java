@@ -234,6 +234,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
 	 	                    Url.add(tempMap2.get("url_img"));
                     	}        
                     Lista.add(Hola);
+                    Lista.add(Url);
                     
 	                return Lista;
                 }
