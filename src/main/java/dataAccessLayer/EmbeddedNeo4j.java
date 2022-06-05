@@ -175,8 +175,8 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 {
                 	Result Users = tx.run("MATCH (n:usuario) RETURN n.user");
                     List<Record> registrosU = Users.list();
-                    List<String> nombres = new ArrayList<>();
-                    List<String> myactors = new ArrayList<>();
+                    List<String> nombres = new LinkedList<>();
+                    List<String> myactors = new LinkedList<>();
                     for (int i = 0; i < registrosU.size(); i++) {
                       	 //myactors.add(registros.get(i).toString());
                       	 nombres.add(registrosU.get(i).get("n.user").asString());

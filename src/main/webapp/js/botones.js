@@ -1,6 +1,7 @@
 (function($) {
   "use strict"; // Start of use strict
   
+	var getInput = 0;
   	//Evento del botón que creara un usuario
 	$("#btnCreateProfile").click(function(){
 			
@@ -22,17 +23,17 @@
 
 	//Evento del botón para iniciar sesión
 	$("#btn_iniciarsesion").click(function(){
-				
-		$.ajax( {
-			
-			type: "GET",
 
-		url: '/Ohtell1/UserLogInServlet?user=' + $('#cb_user_si').val() + '&password=' + $('#cb_password_si').val(),
-			success: function(data) {
-				alert("Resultado: " + data.resultado);
-				location.href = 'portfolio-3-col.html';
-			}
-		} );
+		$.ajax({url: '/Ohtell1/UserLogInServlet?user=' + $('#cb_user_si').val() + '&password=' + $('#cb_password_si').val(), success: function(result){
+			alert("Resultado: " + result.resultado);
+			var itemb = result.resultado[2];	
+			getInput = itemb;
+			localStorage.setItem("storageName",getInput); 	
+			location.href = 'portfolio-3-col.html';
+
+		
+		} 
+	});
 		
 		
 	});
